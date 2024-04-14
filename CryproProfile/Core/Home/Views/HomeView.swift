@@ -20,12 +20,14 @@ struct HomeView: View {
                 .sheet(isPresented: $showPortfolioView) {
                     PortfolioView()
                         .environmentObject(viewModel)
+                  
                 }
             
             VStack {
                 homeHeader
                 HomeStatsView(showPortfolio: $showPortfolio)
-                
+                Text("Pull request")
+         
                 SearchBarView(searchText: $viewModel.searchText)
                 
                 columnTitles
