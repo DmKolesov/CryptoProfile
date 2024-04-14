@@ -21,15 +21,12 @@ struct HomeView: View {
                     PortfolioView()
                         .environmentObject(viewModel)
                 }
-            
             VStack {
                 homeHeader
                 HomeStatsView(showPortfolio: $showPortfolio)
-                
+                Text("Pull full")
                 SearchBarView(searchText: $viewModel.searchText)
-                
                 columnTitles
-                
                 if !showPortfolio {
                     allCoinsList
                         .transition(.move(edge: .leading))
