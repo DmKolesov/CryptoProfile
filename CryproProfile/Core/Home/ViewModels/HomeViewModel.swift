@@ -35,14 +35,6 @@ class HomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        marketDataService.$marketData
-            .map(mapGlobalMarketData)
-            .sink { [weak self] returnedStats in
-                self?.statistics = returnedStats
-            }
-            .store(in: &cancellables)
-        
-        
         $allCoins
             .combineLatest(portfolioDataService.$savedEntities)
             .map { (coinModels, portfolioEntities) -> [CoinModel] in
@@ -53,11 +45,18 @@ class HomeViewModel: ObservableObject {
                             
                         }
                         return coin.updateHoldings(amount: entity.amount)
-                        
                     }
             }
             .sink { [weak self] returnedCoin in
                 self?.portfolioCoins = returnedCoin
+            }
+            .store(in: &cancellables)
+        
+        marketDataService.$marketData
+            .combineLatest($portfolioCoins)
+            .map(mapGlobalMarketData)
+            .sink { [weak self] returnedStats in
+                self?.statistics = returnedStats
             }
             .store(in: &cancellables)
     }
@@ -80,7 +79,7 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    private func mapGlobalMarketData(marketDataModel: MarketDataModel?) -> [StatisticModel] {
+    private func mapGlobalMarketData(marketDataModel: MarketDataModel?, portfolioCoins: [CoinModel]) -> [StatisticModel] {
         var stats: [StatisticModel] = []
         
         guard let data = marketDataModel else {

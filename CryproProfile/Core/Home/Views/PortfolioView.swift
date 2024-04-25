@@ -37,7 +37,7 @@ struct PortfolioView: View {
                 }
             }
             .onChange(of: viewModel.searchText) { newValue in
-                if newValue == "" {
+                if newValue.isEmpty {
                     removeSelectedCoin()
                 }
             }
@@ -57,7 +57,7 @@ extension PortfolioView {
     private var coinLogoList: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 10) {
-                ForEach(viewModel.allCoins) { coin in
+                ForEach(viewModel.searchText.isEmpty ? viewModel.portfolioCoins : viewModel.allCoins) { coin in
                     CoinLogoView(coin: coin)
                         .frame(width: 75)
                         .padding(4)
