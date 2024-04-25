@@ -30,7 +30,7 @@ struct PortfolioView: View {
             .navigationTitle("Edit Portfolio")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                   XMarkButton()
+                    XMarkButton()
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     trailingNavBarButton
@@ -55,7 +55,7 @@ struct PortfolioView_Previews: PreviewProvider {
 extension PortfolioView {
     
     private var coinLogoList: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
+        ScrollView(.horizontal, showsIndicators: false, content: {
             LazyHStack(spacing: 10) {
                 ForEach(viewModel.searchText.isEmpty ? viewModel.portfolioCoins : viewModel.allCoins) { coin in
                     CoinLogoView(coin: coin)
@@ -63,21 +63,22 @@ extension PortfolioView {
                         .padding(4)
                         .onTapGesture {
                             withAnimation(.easeIn) {
-                               updateSelectionCoin(coin: coin)
+                                updateSelectionCoin(coin: coin)
                             }
                         }
                         .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(selectedCoin?.id == coin.id ?
-                                    Color.theme.green : Color.clear
-                                    , lineWidth: 1)
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(selectedCoin?.id == coin.id ?
+                                        Color.theme.green : Color.clear
+                                        , lineWidth: 1)
                         )
                 }
             }
             .frame(height: 120)
             .padding(.leading)
-        }
+        })
     }
+    
     
     private var portfolioInputSection: some View {
         VStack(spacing: 20) {
@@ -101,7 +102,7 @@ extension PortfolioView {
                 Text(getCurrentValue().asCurrencyWith2Decimals())
             }
         }
-//        .animation(.none, value: portfolioInputSection)
+        //        .animation(.none, value: portfolioInputSection)
         .padding()
         .font(.headline)
     }
