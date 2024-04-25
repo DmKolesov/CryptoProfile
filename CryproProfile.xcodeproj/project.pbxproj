@@ -43,6 +43,7 @@
 		4DF0F85C2BCBE59500669063 /* PortfolioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DF0F85A2BCBE59500669063 /* PortfolioContainer.xcdatamodeld */; };
 		4DF0F85E2BCBE64900669063 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF0F85D2BCBE64900669063 /* PortfolioDataService.swift */; };
 		EB9C51CA2BDACA1D001C7E37 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9C51C92BDACA1D001C7E37 /* HapticManager.swift */; };
+		EB9C51CF2BDAE5AE001C7E37 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9C51CE2BDAE5AE001C7E37 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		4DF0F85B2BCBE59500669063 /* PortfolioContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioContainer.xcdatamodel; sourceTree = "<group>"; };
 		4DF0F85D2BCBE64900669063 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
 		EB9C51C92BDACA1D001C7E37 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		EB9C51CE2BDAE5AE001C7E37 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 		4D6F74B12BC972090052A0F5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EB9C51CB2BDAE56A001C7E37 /* Detail */,
 				4D6F74B72BC973AD0052A0F5 /* Components */,
 				4D6F74B22BC972110052A0F5 /* Home */,
 			);
@@ -261,6 +264,30 @@
 			path = CoinImage;
 			sourceTree = "<group>";
 		};
+		EB9C51CB2BDAE56A001C7E37 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				EB9C51CD2BDAE582001C7E37 /* Views */,
+				EB9C51CC2BDAE57A001C7E37 /* ViewModels */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		EB9C51CC2BDAE57A001C7E37 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		EB9C51CD2BDAE582001C7E37 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB9C51CE2BDAE5AE001C7E37 /* DetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -334,6 +361,7 @@
 				4D6F74D72BC98D740052A0F5 /* HomeViewModel.swift in Sources */,
 				4D6F74DC2BC9937C0052A0F5 /* Constants.swift in Sources */,
 				4D9B5DC52BCACF99004FB4F0 /* PortfolioView.swift in Sources */,
+				EB9C51CF2BDAE5AE001C7E37 /* DetailView.swift in Sources */,
 				4D29B6672BC9E51E00A57612 /* HomeStatsView.swift in Sources */,
 				4D6F74C62BC9761D0052A0F5 /* String+Ext.swift in Sources */,
 				4D6F74B62BC972370052A0F5 /* HomeView.swift in Sources */,

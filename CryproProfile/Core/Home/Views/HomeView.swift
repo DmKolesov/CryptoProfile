@@ -12,6 +12,8 @@ struct HomeView: View {
     @EnvironmentObject private var viewModel: HomeViewModel
     @State private var showPortfolio: Bool = false
     @State private var showPortfolioView: Bool = false
+    @State private var selectedCoin: CoinModel? = nil
+    @State private var showDetailView: Bool = false
     
     var body: some View {
         ZStack {
@@ -24,8 +26,8 @@ struct HomeView: View {
             VStack {
                 homeHeader
                 HomeStatsView(showPortfolio: $showPortfolio)
-                
                 SearchBarView(searchText: $viewModel.searchText)
+                
                 columnTitles
                 
                 if !showPortfolio {
@@ -36,10 +38,19 @@ struct HomeView: View {
                     portfolioCoinsList
                         .transition(.move(edge: .trailing))
                 }
-                
                 Spacer(minLength: 0)
             }
         }
+        .background(
+      
+            
+            NavigationLink(
+                destination: DetailLoadingView(coin: $selectedCoin),
+                isActive: $showDetailView,
+                label: {
+                  EmptyView()
+                })
+        )
     }
 }
 
@@ -87,13 +98,17 @@ extension HomeView {
     private var allCoinsList: some View {
         List {
             ForEach(viewModel.allCoins) { coin in
-                CoinRowView(coin: coin, isShowHoldingsColumn: false)
-                    .listRowInsets(.init(
-                        top: 10,
-                        leading: 0,
-                        bottom: 10,
-                        trailing: 10)
-                    )
+         
+                    CoinRowView(coin: coin, isShowHoldingsColumn: false)
+                        .listRowInsets(.init(
+                            top: 10,
+                            leading: 0,
+                            bottom: 10,
+                            trailing: 10)
+                        )
+                        .onTapGesture {
+                            segue(coin: coin)
+                        }
             }
         }
         .listStyle(PlainListStyle())
@@ -109,9 +124,17 @@ extension HomeView {
                         bottom: 10,
                         trailing: 10)
                     )
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
             }
         }
         .listStyle(PlainListStyle())
+    }
+    
+    private func segue(coin: CoinModel) {
+        selectedCoin = coin
+        showDetailView.toggle()
     }
     
     private var columnTitles: some View {
