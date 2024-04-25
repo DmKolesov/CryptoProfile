@@ -17,15 +17,17 @@ struct HomeView: View {
         ZStack {
             Color.theme.background
                 .ignoresSafeArea()
-                .sheet(isPresented: $showPortfolioView) {
+                .sheet(isPresented: $showPortfolioView, content: {
                     PortfolioView()
-                        .environmentObject(viewModel)
-                }
+                          .environmentObject(viewModel)
+                })
             VStack {
                 homeHeader
                 HomeStatsView(showPortfolio: $showPortfolio)
+                
                 SearchBarView(searchText: $viewModel.searchText)
                 columnTitles
+                
                 if !showPortfolio {
                     allCoinsList
                         .transition(.move(edge: .leading))
@@ -122,6 +124,15 @@ extension HomeView {
      
             Text("Price")
                 .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+            
+            Button(action: {
+                withAnimation(.linear(duration: 2.0)) {
+                    viewModel.reloadData()
+                }
+            }, label: {
+                Image(systemName: "goforward")
+            })
+            .rotationEffect(Angle(degrees: viewModel.isLoading ? 360 : 0), anchor: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         }
         .font(.caption)
         .foregroundColor(Color.theme.secondaryText)
