@@ -24,7 +24,6 @@ struct HomeView: View {
             VStack {
                 homeHeader
                 HomeStatsView(showPortfolio: $showPortfolio)
-                Text("Pull full")
                 SearchBarView(searchText: $viewModel.searchText)
                 columnTitles
                 if !showPortfolio {
