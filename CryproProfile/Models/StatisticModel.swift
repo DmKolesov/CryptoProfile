@@ -5,7 +5,6 @@
 //  Created by dmitri kolesov on 12.04.2024.
 //
 
-
 import Foundation
 
 struct StatisticModel: Identifiable {
