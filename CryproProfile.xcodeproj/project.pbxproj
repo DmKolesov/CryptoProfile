@@ -47,6 +47,7 @@
 		EB9C51D32BDCF72A001C7E37 /* CoinDetailDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9C51D22BDCF72A001C7E37 /* CoinDetailDataService.swift */; };
 		EB9C51D52BDCF99F001C7E37 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9C51D42BDCF99F001C7E37 /* DetailViewModel.swift */; };
 		EB9C51D72BDD4604001C7E37 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9C51D62BDD4604001C7E37 /* ChartView.swift */; };
+		EB9C51DD2BE101D0001C7E37 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9C51DC2BE101D0001C7E37 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		EB9C51D22BDCF72A001C7E37 /* CoinDetailDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailDataService.swift; sourceTree = "<group>"; };
 		EB9C51D42BDCF99F001C7E37 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		EB9C51D62BDD4604001C7E37 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		EB9C51DC2BE101D0001C7E37 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		4D6F74B12BC972090052A0F5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EB9C51DA2BE10199001C7E37 /* Settings */,
 				EB9C51CB2BDAE56A001C7E37 /* Detail */,
 				4D6F74B72BC973AD0052A0F5 /* Components */,
 				4D6F74B22BC972110052A0F5 /* Home */,
@@ -297,6 +300,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		EB9C51DA2BE10199001C7E37 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				EB9C51DB2BE101B0001C7E37 /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		EB9C51DB2BE101B0001C7E37 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB9C51DC2BE101D0001C7E37 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -379,6 +398,7 @@
 				4D6F74D32BC97B540052A0F5 /* CircleButtonAnimationView.swift in Sources */,
 				4D29B6632BC9C76000A57612 /* SearchBarView.swift in Sources */,
 				4D6F74E22BC9A17A0052A0F5 /* CoinImageView.swift in Sources */,
+				EB9C51DD2BE101D0001C7E37 /* SettingsView.swift in Sources */,
 				4D6F74C82BC976420052A0F5 /* UIApplication+Ext.swift in Sources */,
 				4D9B5DC72BCAD341004FB4F0 /* XMarkButton.swift in Sources */,
 				EB9C51D72BDD4604001C7E37 /* ChartView.swift in Sources */,

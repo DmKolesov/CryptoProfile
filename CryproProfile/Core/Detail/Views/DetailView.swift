@@ -11,6 +11,7 @@ struct DetailLoadingView: View {
     
     @Binding var coin: CoinModel?
     
+    
     var body: some View {
         ZStack {
             if let coin = coin {
@@ -23,6 +24,7 @@ struct DetailLoadingView: View {
 struct DetailView: View {
     
     @StateObject private var viewModel: DetailViewModel
+    @State private var showFullDescription: Bool = false
     private let colums: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -43,10 +45,13 @@ struct DetailView: View {
                 VStack(spacing: 20) {
                     overViewTitle
                     Divider()
+                    descriptionSection
                     overviewGrid
                     additionalTitle
                     Divider()
                     additionalGrid
+                  
+                    
                 }
                 .padding()
             }
@@ -91,6 +96,33 @@ private extension DetailView {
             .bold()
             .foregroundStyle(Color.theme.accent)
             .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    var descriptionSection: some View {
+        ZStack {
+            if let coinDescription = viewModel.coinDescription,
+               !coinDescription.isEmpty {
+                VStack(alignment: .leading) {
+                    Text(coinDescription)
+                        .lineLimit(showFullDescription ? nil : 3)
+                        .font(.callout)
+                        .foregroundStyle(Color.theme.secondaryText)
+                    Button(action: {
+                        withAnimation(.easeInOut) {
+                            showFullDescription.toggle()
+                        }
+                    }, label: {
+                        Text(showFullDescription ? "Less" : "Read more..")
+                    })
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .padding(.vertical, 4)
+                  
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+               
+            }
+        }
     }
     
     var overviewGrid: some View {
