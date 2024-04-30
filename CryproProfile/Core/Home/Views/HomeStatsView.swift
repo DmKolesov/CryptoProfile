@@ -19,10 +19,17 @@ struct HomeStatsView: View {
                     .frame(width: UIScreen.main.bounds.width / 3)
             }
         }
+        .onAppear(perform: {
+            DispatchQueue.main.async {
+                viewModel.reloadData()
+            }
+        })
         .frame(width: UIScreen.main.bounds.width,
                alignment: showPortfolio ? .trailing : .leading
+            
         )
     }
+    
 }
 
 struct HomeStatsView_Previews: PreviewProvider {
