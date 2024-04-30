@@ -15,7 +15,7 @@ struct PortfolioView: View {
     @State private var showCheckMark: Bool = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     SearchBarView(searchText: $viewModel.searchText)
@@ -47,8 +47,10 @@ struct PortfolioView: View {
 
 struct PortfolioView_Previews: PreviewProvider {
     static var previews: some View {
-        PortfolioView()
-            .environmentObject(dev.homeVM)
+        NavigationStack {
+            PortfolioView()
+                .environmentObject(dev.homeVM)
+        }
     }
 }
 

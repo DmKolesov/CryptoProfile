@@ -8,19 +8,48 @@
 import SwiftUI
 
 struct SettingsView: View {
+ 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                coinGeckoSection
+            }
+            .listStyle(GroupedListStyle())
+            .navigationTitle("Settings")
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarLeading) {
+                    XMarkButton()
+                }
+            })
+        }
     }
-}
-
-#Preview {
-    SettingsView()
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            DetailView(coin: dev.coin)
+        NavigationStack {
+            SettingsView()
         }
+    }
+}
+
+private extension SettingsView {
+    var coinGeckoSection: some View {
+        Section {
+            VStack(alignment: .leading, content: {
+                Image("coingecko")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                Text("The cryptocurrency data that is used in this app comes from a free API from CoinGecko")
+                    .font(.callout)
+                    .fontWeight(.medium)
+                    .foregroundStyle(Color.theme.accent)
+            })
+        } header: {
+            Text("CoinGecko")
+        }
+        .padding(.vertical)
     }
 }
